@@ -1,16 +1,28 @@
 package com.kenzie.app;
 
+import java.time.chrono.MinguoDate;
+
 public class Main {
 
     public static int rollDice() {
         // Your Code Here
+        Dice diceRoll = new Dice();
+        diceRoll.roll();
+        int result = diceRoll.getTotal();
 
-        return 0;
+        return result;
     }
 
     public static int[] roll1000Times() {
         int[] results = new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
         // Your Code Here
+        for (int i =0; i < 1000; i++){
+            Dice diceRoll2 = new Dice();
+            diceRoll2.roll();
+            int totalRoll = diceRoll2.getTotal();
+            results[totalRoll] += 1;
+        }
+
 
         return results;
     }
@@ -20,6 +32,17 @@ public class Main {
         // Now, the dice 1000 times again.
         // But, re-roll both dice any time either die is a 1.
         // Your Code Here
+        for (int i = 0; i < 1000; i++){
+            Dice diceRoll3 = new Dice();
+            diceRoll3.roll();
+            int totalRoll = 0;
+            if (diceRoll3.getDice1() == 1 || diceRoll3.getDice2() == 1){
+                diceRoll3.roll();
+            } else {
+                totalRoll = diceRoll3.getTotal();
+            }
+            results[totalRoll] += 1;
+        }
 
         return results;
     }
